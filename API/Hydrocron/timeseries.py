@@ -3,7 +3,7 @@ from utils.enum import TimeseriesFeature, TimeseriesOutput
 import requests
 import datetime
 
-import config
+import config.globalvariables
 
 
 # File wide variables

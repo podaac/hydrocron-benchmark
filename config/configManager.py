@@ -10,7 +10,8 @@ globalVars = config.globalvariables.GlobalVariables
 class ConfigManager():
 
     def InitializeConfig(
-        env:Environment):
+        env:Environment,
+        threadCount:int=0):
         
         print(f"\r\nSetting config file variables...")
 
@@ -19,5 +20,9 @@ class ConfigManager():
         # Global
         globalVars.Environment = env
 
+        # Parallel execution / threading
+        globalVars.Threading_Enable = threadCount > 1
+        globalVars.Threading_Execution_Count = threadCount
+    
         # Hydrocron
         globalVars.HYDROCRON_baseurl = envVariableJson[env.name]['HYDROCRON_API_BASEURL']
