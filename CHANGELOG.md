@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Created dependencies file for pip
     - Added multiple thread handling to code
     - Set up logging
+    - Added locust for test execution
 ### Changed
 ### Deprecated
 ### Removed
