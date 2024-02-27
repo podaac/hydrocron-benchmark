@@ -12,7 +12,11 @@ endpoint = "timeseries"
 
 class Timeseries():
     
-    def Ping(
+    def __init__(self):
+        self.session = requests.session()
+    
+    
+    def Ping(self,
             feature:TimeseriesFeature = TimeseriesFeature.Reach,
             output:TimeseriesOutput = TimeseriesOutput.geojson,
             startdate:datetime = None,
@@ -39,8 +43,9 @@ class Timeseries():
         
         custom_header = {
             "Content-Type": "application/json" }
-            
-        response = requests.post(
+        
+        print(f'fullurl: {fullurl}')
+        response = self.session.post(
             url = fullurl,
             headers = custom_header)
         
