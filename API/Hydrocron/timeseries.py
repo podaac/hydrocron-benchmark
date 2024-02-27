@@ -27,8 +27,9 @@ class Timeseries():
         if logging:
             print(f'\r\nGetting a Ping...')
             
-        featureId = ""
-        fullurl = f'{globalVars.HYDROCRON_baseurl}/{endpoint}?feature={feature}&feature_id={featureId}&output={output}'
+        # Test featrure Id
+        featureId = "00001100011"
+        fullurl = f'{globalVars.HYDROCRON_baseurl}/{endpoint}?feature={feature.name}&feature_id={featureId}&output={output.name}'
         
         if startdate != None:
             fullurl += f'&start_time={startdate.isoformat(timespec="seconds")}'
