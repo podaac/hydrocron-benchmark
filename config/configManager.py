@@ -18,7 +18,10 @@ class ConfigManager():
         envVariableJson = FileHandler.GetJsonFileContent("env.json", "./config")
 
         # Global
-        globalVars.Environment = env
+        if type(env) != Environment:
+            globalVars.Environment = Environment.from_str(str(env))
+        else:
+            globalVars.Environment = env
 
         # Parallel execution / threading
         globalVars.Threading_Enable = threadCount > 1

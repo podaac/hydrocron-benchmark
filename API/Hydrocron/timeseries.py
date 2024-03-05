@@ -12,7 +12,11 @@ endpoint = "timeseries"
 
 class Timeseries():
     
-    def Ping(
+    def __init__(self):
+        self.session = requests.session()
+    
+    
+    def Ping(self,
             feature:TimeseriesFeature = TimeseriesFeature.Reach,
             output:TimeseriesOutput = TimeseriesOutput.geojson,
             startdate:datetime = None,
@@ -23,8 +27,9 @@ class Timeseries():
         if logging:
             print(f'\r\nGetting a Ping...')
             
-        featureId = ""
-        fullurl = f'{globalVars.HYDROCRON_baseurl}/{endpoint}?feature={feature}&feature_id={featureId}&output={output}'
+        # Test featrure Id
+        featureId = "00001100011"
+        fullurl = f'{globalVars.HYDROCRON_baseurl}/{endpoint}?feature={feature.name}&feature_id={featureId}&output={output.name}'
         
         if startdate != None:
             fullurl += f'&start_time={startdate.isoformat(timespec="seconds")}'
@@ -39,8 +44,10 @@ class Timeseries():
         
         custom_header = {
             "Content-Type": "application/json" }
-            
-        response = requests.post(
+        
+        if logging:
+            print(f'fullurl: {fullurl}')
+        response = self.session.post(
             url = fullurl,
             headers = custom_header)
         
