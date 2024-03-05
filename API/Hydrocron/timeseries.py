@@ -45,7 +45,8 @@ class Timeseries():
         custom_header = {
             "Content-Type": "application/json" }
         
-        print(f'fullurl: {fullurl}')
+        if logging:
+            print(f'fullurl: {fullurl}')
         response = self.session.post(
             url = fullurl,
             headers = custom_header)

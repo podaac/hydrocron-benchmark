@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Added multiple thread handling to code
     - Set up logging
     - Added locust for test execution
+- **[73](https://github.com/podaac/hydrocron/issues/73)**
+    - Created GIT PR template
+    - Created GIT Action workflow for test execution
 ### Changed
 ### Deprecated
 ### Removed
