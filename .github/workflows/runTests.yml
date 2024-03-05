@@ -13,10 +13,16 @@ on:
           - ops
           - uat
           - sit
+      runtime:
+            required: false
+            description: Define how long the benchmarking should last. Examples 5s, 2m, 1h 3m 
+            default: 10s
+            type: string 
       threadcount:
         required: false
         description: Select how many times the tests should run at the same time
         type: string 
+      
 
 jobs:
   # First job in the workflow installs and verifies the software
@@ -36,12 +42,10 @@ jobs:
           pip3 install -r ./dependencies_pip
       - name: Execute tests
         run: |
-          python3 "executeApiTests.py" -e ${{ github.event.inputs.environment }} -t ${{ github.event.inputs.threadcount }}
+          sh run_local.sh "${{ github.event.inputs.environment }}" "${{ github.event.inputs.runtime }}" "${{ github.event.inputs.threadcount }}"
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
           files: |
-            test-results/**/*.xml
-            test-results/**/*.trx
-            test-results/**/*.json
+            test-results/**/*.index
