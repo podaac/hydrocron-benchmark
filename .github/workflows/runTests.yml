@@ -12,7 +12,6 @@ on:
         options: 
           - ops
           - uat
-          - sit
       runtime:
             required: false
             description: Define how long the benchmarking should last. Examples 5s, 2m, 1h 3m 
