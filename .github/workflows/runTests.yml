@@ -13,14 +13,15 @@ on:
           - ops
           - uat
       runtime:
-            required: false
-            description: Define how long the benchmarking should last. Examples 5s, 2m, 1h 3m 
-            default: 10s
-            type: string 
-      threadcount:
-        required: false
-        description: Select how many times the tests should run at the same time
+        required: true
+        description: Define how long the benchmarking should last. Examples 5s, 2m, 1h 3m 
+        default: 10s
         type: string 
+      threadcount:
+        required: true
+        description: Select how many times the tests should run at the same time
+        default: 1
+        type: number
       
 
 jobs:
