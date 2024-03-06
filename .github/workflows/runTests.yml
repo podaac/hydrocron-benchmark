@@ -49,3 +49,9 @@ jobs:
         with:
           files: |
             test-results/**/*.index
+      - name: ANY REPROT - GH Pages Push - SAME REPO
+        uses: PavanMudigonda/html-reporter-github-pages@v1.2
+        with:
+          test_results: locust_tests_report
+          keep_reports: 10
+          subfolder: test-results  # Level 1 Folder Structure you like
