@@ -8,7 +8,8 @@ on:
       environment:
         required: true
         description: Select the environment to execute on
-        type: choice 
+        type: choice
+        default: uat
         options: 
           - ops
           - uat
@@ -53,9 +54,8 @@ jobs:
         if: always()
         with:
           files: |
-            test-results/**/*.index
+            test-results/**/*.html
       - name: Upload Artifact
-        # uses: actions/upload-pages-artifact@v1
         uses: actions/upload-artifact@v4
         with: 
           path: './test-results/locust_tests_report.html'
