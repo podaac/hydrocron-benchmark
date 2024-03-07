@@ -26,16 +26,16 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  actions: write
-  checks: read
-  contents: write
+  actions: read
+  checks: write   # For publish-unit-test-result-action
+  contents: read
   deployments: read
-  id-token: write
+  id-token: write   # For deploy-pages to verify the deployment originates from an appropriate source
   issues: read
   discussions: read
   packages: read
-  pages: write
-  pull-requests: read
+  pages: write    # For deploy-pages to deploy to Pages
+  pull-requests: write   # For publish-unit-test-result-action
   repository-projects: read
   security-events: read
   statuses: read
@@ -59,12 +59,6 @@ jobs:
       - name: Execute tests
         run: |
           sh run_local.sh "${{ github.event.inputs.environment }}" "${{ github.event.inputs.runtime }}" "${{ github.event.inputs.threadcount }}"
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always()
-        with:
-          files: |
-            test-results/**/*.html
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with: 
@@ -74,4 +68,10 @@ jobs:
         uses: actions/deploy-pages@v2
         with:
           emit_telemetry: false
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: |
+            test-results/**/*.html
       
