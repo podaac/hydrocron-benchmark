@@ -50,8 +50,8 @@ jobs:
           files: |
             test-results/**/*.index
       - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v1
-        # uses: actions/upload-artifact@v4
+        # uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@v4
         with: 
           path: './test-results/locust_tests_report.html'
           name: 'Locust-Report'
