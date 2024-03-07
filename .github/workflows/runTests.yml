@@ -24,22 +24,6 @@ on:
         default: 1
         type: number
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  actions: read
-  checks: write   # For publish-unit-test-result-action
-  contents: read
-  deployments: read
-  id-token: write   # For deploy-pages to verify the deployment originates from an appropriate source
-  issues: read
-  discussions: read
-  packages: read
-  pages: write    # For deploy-pages to deploy to Pages
-  pull-requests: write   # For publish-unit-test-result-action
-  repository-projects: read
-  security-events: read
-  statuses: read
-
 jobs:
   # First job in the workflow installs and verifies the software
   build:
@@ -48,8 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it and the directory won't be empty
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.9
       - name: Install dependencies
