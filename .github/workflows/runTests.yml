@@ -22,7 +22,12 @@ on:
         description: Select how many times the tests should run at the same time
         default: 1
         type: number
-      
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   # First job in the workflow installs and verifies the software
@@ -57,5 +62,6 @@ jobs:
           name: 'Locust-Report'
       - name: Deploy Artifact
         uses: actions/deploy-pages@v2
-        id: deployment 
+        with:
+          emit_telemetry: false
       
