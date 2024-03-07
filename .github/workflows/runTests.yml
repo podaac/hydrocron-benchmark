@@ -49,12 +49,13 @@ jobs:
         with:
           files: |
             test-results/**/*.index
-      - name: ANY REPROT - GH Pages Push - SAME REPO
-        uses: PavanMudigonda/html-reporter-github-pages@v1.2
-        with:
-          test_results: locust_tests_report
-          keep_reports: 10
-          subfolder: test-results  # Level 1 Folder Structure you like
-          tool_name:  # Level 2 Folder Structure you like
-          workflow_name:   # Level 3 Folder Structure you like
-          env:   # Level 4 Folder Structure you like
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v1
+        # uses: actions/upload-artifact@v4
+        with: 
+          path: './test-results/locust_tests_report.html'
+          name: 'Locust-Report'
+      - name: Deploy Artifact
+        uses: actions/deploy-pages@v2
+        id: deployment 
+      
