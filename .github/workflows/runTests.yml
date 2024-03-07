@@ -64,8 +64,9 @@ jobs:
         with: 
           path: './test-results/locust_tests_report.html'
           name: 'Locust-Report'
+          compression: 0
       - name: Deploy Artifact
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages
         with:
           emit_telemetry: false
       - name: Publish Test Results
