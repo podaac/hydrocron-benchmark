@@ -8,21 +8,21 @@ on:
       environment:
         required: true
         description: Select the environment to execute on
-        type: choice 
+        type: choice
+        default: uat
         options: 
           - ops
           - uat
-          - sit
       runtime:
-            required: false
-            description: Define how long the benchmarking should last. Examples 5s, 2m, 1h 3m 
-            default: 10s
-            type: string 
-      threadcount:
-        required: false
-        description: Select how many times the tests should run at the same time
+        required: true
+        description: Define how long the benchmarking should last. Examples 5s, 2m, 1h 3m 
+        default: 10s
         type: string 
-      
+      threadcount:
+        required: true
+        description: Select how many times the tests should run at the same time
+        default: 1
+        type: number
 
 jobs:
   # First job in the workflow installs and verifies the software
@@ -32,8 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it and the directory won't be empty
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.9
       - name: Install dependencies
@@ -43,9 +43,8 @@ jobs:
       - name: Execute tests
         run: |
           sh run_local.sh "${{ github.event.inputs.environment }}" "${{ github.event.inputs.runtime }}" "${{ github.event.inputs.threadcount }}"
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always()
-        with:
-          files: |
-            test-results/**/*.index
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with: 
+          path: './test-results/locust_tests_report.html'
+          name: 'Locust-Report'

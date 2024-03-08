@@ -1,4 +1,4 @@
-requests
-pytest
-dateutils
-locust
+# Python 3.9
+requests==2.31.0
+dateutils==0.6.12
+locust==2.23.1
