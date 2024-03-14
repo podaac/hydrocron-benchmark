@@ -20,6 +20,6 @@ class TestTimeseries(HttpUser):
         expectedStatusCode = 200
         client_Timeseries = Timeseries()
         client_Timeseries.session = self.client
-        response:Response = client_Timeseries.Ping()
+        response:Response = client_Timeseries.GetTimeseries()
         assert response.status_code == expectedStatusCode, f'Response code "{response.status_code}" is not "{expectedStatusCode}"!'
         

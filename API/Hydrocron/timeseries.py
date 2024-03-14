@@ -16,7 +16,7 @@ class Timeseries():
         self.session = requests.session()
     
     
-    def Ping(self,
+    def GetTimeseries(self,
             feature:TimeseriesFeature = TimeseriesFeature.Reach,
             output:TimeseriesOutput = TimeseriesOutput.geojson,
             startdate:datetime = None,
