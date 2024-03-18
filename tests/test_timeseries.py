@@ -1,6 +1,6 @@
-from locust import HttpUser, task, tag, events
+from locust import HttpUser, task, tag
 from requests import Response
-
+from json import loads
 
 from API.Hydrocron import Timeseries
 
@@ -20,6 +20,9 @@ class TestTimeseries(HttpUser):
         expectedStatusCode = 200
         client_Timeseries = Timeseries()
         client_Timeseries.session = self.client
-        response:Response = client_Timeseries.Ping()
+        response:Response = client_Timeseries.GetTimeseries()
         assert response.status_code == expectedStatusCode, f'Response code "{response.status_code}" is not "{expectedStatusCode}"!'
+        jsonData = loads(response.text)
+        queryStatus = jsonData['status']
+        assert queryStatus.startswith('200'), f'Response json status "{queryStatus}" is not "200 OK"!'
         

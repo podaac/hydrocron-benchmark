@@ -28,4 +28,4 @@ class ConfigManager():
         globalVars.Threading_Execution_Count = threadCount
     
         # Hydrocron
-        globalVars.HYDROCRON_baseurl = envVariableJson[env.name]['HYDROCRON_API_BASEURL']
+        globalVars.SOTO_baseurl = envVariableJson[env.name]['SOTO_API_BASEURL']
