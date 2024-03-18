@@ -8,7 +8,7 @@ class GlobalVariables():
     Threading_Execution_Count:int = 0
     
     # Hydrocron
-    HYDROCRON_baseurl:str = ""
+    SOTO_baseurl:str = ""
 
     # Storage
     TempStorageDict:dict = {}
