@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **[73](https://github.com/podaac/hydrocron/issues/73)**
     - Created GIT PR template
     - Created GIT Action workflow for test execution
+- **[74](https://github.com/podaac/hydrocron/issues/74)**
+    - Updated timeseries test
+    - Removed Pytest related code
 ### Changed
 ### Deprecated
 ### Removed
