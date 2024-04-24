@@ -25,4 +25,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Deprecated
 ### Removed
 ### Fixed
+- **[6](https://github.com/podaac/hydrocron-benchmark/issues/6)**
+    - Added if on failure() too to the Upload Artifact workflow step
 ### Security
