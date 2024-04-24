@@ -43,8 +43,6 @@ jobs:
       - name: Execute tests
         run: |
           sh run_local.sh "${{ github.event.inputs.environment }}" "${{ github.event.inputs.runtime }}" "${{ github.event.inputs.threadcount }}"
-      - name: Should fail here
-        run: exit 1
       - name: Upload Artifact
         if: success() || failure()
         uses: actions/upload-artifact@v4
